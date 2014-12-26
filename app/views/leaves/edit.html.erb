@@ -1,0 +1,13 @@
+<%= form_for [@leave] do |f| %>
+ 
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+
+  <p>
+    <%= f.label :comment %><br>
+    <%= f.text_area :comment, :id => "message_area" %>
+  </p>
+  <br>
+  <p>
+     <%= f.submit value ="Update leaves"  %>
+  </p>
+<% end %>

@@ -1,0 +1,4 @@
+class AddUserIdToResponsible < ActiveRecord::Migration
+  def change
+  end
+end

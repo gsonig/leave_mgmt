@@ -1,0 +1,63 @@
+<div class="margin-left">
+
+
+
+<h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email, autofocus: true , :class=>'textbox-size' %></div>
+  
+   <div><%= f.label :first_name %><br />
+    <%= f.text_field :first_name, :class=>'textbox-size' %></p></div>
+    
+  <div><%= f.label :last_name %><br />
+    <%= f.text_field :last_name , :class=>'textbox-size' %></p></div>
+        
+  <div><%= f.label :gender %><br />
+    <%#= f.text_field :gender , :placeholder => "Male/Female",:class=>'textbox-size'%></p></div> 
+      <%= f.select :gender, User::GENDER %>
+  <div>
+    <%= f.label :DOB %><br />    
+    <%= f.text_field :dob, :id => "datepicker", :class=>"input-small" %>
+         <script type="text/javascript">
+            // When the document is ready
+            $(document).ready(function () {  
+                $('#datepicker').datepicker({
+                    todayBtn: "linked",
+                });
+            });
+        </script>
+    </div>
+  <div><%= f.label :mobile %><br />
+    <%= f.text_field :mobile , :placeholder => "Mobile", :class=>'textbox-size'%></p></div>
+    
+   <div><%= f.label :family_member_mobile %><br />
+    <%= f.text_field :family_member_mobile, :placeholder => "Family Member Mobile", :class=>'textbox-size'%></p></div>
+    
+   <div><%= f.label :address %><br />
+    <%= f.text_field :address , :placeholder => "Address", :class=>'textbox-size'%></p></div>
+    
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+
+  <div><%= f.label :current_password %>
+   <%= f.password_field :current_password , :placeholder => "Password" , autocomplete: "off" %> <br><i>(we need your current password to confirm your changes)</i><br />
+   </div>
+<br/>
+  <div><%= f.submit "Update" %></div>
+<% end %>
+<style>
+
+</style>
+
+
+
+
+</div>

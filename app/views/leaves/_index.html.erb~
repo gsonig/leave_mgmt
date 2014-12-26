@@ -1,0 +1,74 @@
+
+
+<script>
+  $(document).ready(function() {
+    $('#calendar').fullCalendar({
+      header: {
+        left: 'prev,next',
+        center: 'title',
+        right: 'month,basicWeek,basicDay',
+      },
+      defaultDate: '2014-06-12',
+      editable: true,
+      events: [
+        <% @leaves.each do |leave| %>
+            {
+              title  : "<%= leave.user.first_name %>",
+              id  : "<%=leave.id %>",
+              description : "<%= leave.status %>",
+                textColor: 'black',
+              start  : "<%= leave.start_date.strftime '%Y-%m-%dT%H:%M:%S' %>",
+              end    : "<%= leave.end_date.strftime '%Y-%m-%dT%H:%M:%S' %>",
+              <% if  leave.status.downcase == 'approved' %>
+                backgroundColor: 'green',
+              <% elsif  leave.status.downcase == 'pending' %>
+                backgroundColor: 'yellow',
+              <% elsif  leave.status.downcase == 'declined' %>
+                backgroundColor: 'red'
+              <% end %>
+
+            },
+           <% end %>
+      ],
+        eventClick: function(calEvent, jsEvent, view) {
+       
+        //alert(calEvent.title+ calEvent.id + '\n' + calEvent.description );
+        // change the border color just for fun
+        //$(this).css('border-color', 'red');var me = this;
+            $("#myDialog").dialog({
+                        modal: true,
+                        height: 300,
+                        width: 400,
+                        title: 'Description',
+                        open: function ()
+                        {
+                          $(this).load("leaves/"+ calEvent.id)
+                        }
+                   });
+              }
+      }); 
+      
+      $('#calendar').fullCalendar('gotoDate', <%=session['month'].year%>,<%= session['month'].month.to_i-1 %>);
+     });
+
+</script>
+
+<style>
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+    font-size: 14px;
+  }
+
+  #calendar {
+    width: 900px;
+    margin: 40px auto;
+  }
+
+</style>
+
+  <div id='calendar'></div>
+
+<div id='myDialog'></div>

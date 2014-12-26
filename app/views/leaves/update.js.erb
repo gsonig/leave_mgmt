@@ -1,0 +1,5 @@
+$('#myModal').modal('hide');
+$('body').removeClass('modal-open');
+$('.modal-backdrop').remove();
+$("#all_data").html( "<%= escape_javascript( render( :partial => 'welcomes/index') ) %>" );
+$("#flash").html("<%= flash[:error]%>");

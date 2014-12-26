@@ -1,0 +1,129 @@
+.tab-right {
+  float:right;
+  height:40px;
+}
+.tab-right ul{
+  display:block;
+}
+.tab-right ul li{
+  float:left;
+  padding: 0px 10px 0px !important;
+}
+.tab-right ul li a{
+  padding: 0px 10px 0px !important;
+}
+
+
+.margin-left{
+  margin-left: 490px;
+  margin-right: 460px;
+  margin-top: 29px;
+}
+.link{
+  margin-right: 200px;
+  margin-top: -100px;
+  margin-left: 100px;
+}
+.button-size{
+  width: 126px;
+}
+.textbox-size{
+  padding:12px !important;
+}
+.center{
+  padding: 15px 10px 0px !important;
+}
+
+.icon{
+  margin-top: 25px;
+  margin-left: 80px;
+  }
+  .icon1{
+  margin-top: 100px;
+  margin-left: 400px;
+  }
+  .
+.notify{
+  margin-top: -100px;
+  margin-left: 90px;
+  color: red;
+}
+   .ui-widget-header {
+        background: white;
+        border: 0px;
+        color:black;
+    }
+
+    #ui-dialog-title-dialog {
+    background-color: black;
+    }
+
+    .ui-widget-overlay {
+        background: none repeat-x scroll 0 0 black;
+        opacity: 0.7;
+    }
+   textarea#message_area {
+  width: 300px;
+  height:  50px;
+}
+ .date{
+    width:  300px;
+    height:  30px;
+ }
+  
+   .textfield{
+  width: -10px;
+  height:  40px;
+}
+
+th,td
+{
+padding:5px;
+}
+ table,th,td
+{
+border:1px solid black;
+border-collapse:collapse;
+}
+th
+{
+   background-color: pink
+}
+.table{
+padding-left: 90px;
+padding-right: 90px;
+}
+#paginator{
+  padding-left: -50px;
+}
+ .pending{
+    background: yellow;
+}
+.approved{
+    background: green;
+}
+.decline{
+    background: red;
+}
+
+.approved a, .decline a{
+    color: white;
+}
+#calendar .fc-content{
+  background-color: #FFFFFF;
+  font-size: 120%;
+}
+#calendar .fc-event{
+  box-shadow: 2px 2px 2px #706868;
+}
+table.fc-header, table.fc-header td{
+    border: none !important;
+}
+#calendar .fc-event{
+  background-color: red;
+}
+.pre-next{
+padding-left: 90px;
+padding-right: 10px;
+padding-bottom: -30px;
+}

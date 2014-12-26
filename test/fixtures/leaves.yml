@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  subject: MyText
+  comment: MyText
+  date: 2014-06-25
+  responsible_id: 1
+  user_id: 1
+  status: MyString
+  leave_comment: MyText
+
+two:
+  subject: MyText
+  comment: MyText
+  date: 2014-06-25
+  responsible_id: 1
+  user_id: 1
+  status: MyString
+  leave_comment: MyText

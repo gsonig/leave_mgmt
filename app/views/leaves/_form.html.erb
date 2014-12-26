@@ -1,0 +1,28 @@
+  <div id="flash"></div>
+
+  <%= form_for [@leave],:remote => true,:id => "form" do |f| %>
+      <% if @leave.errors.any? %>
+          <div id="error_explanation">
+              <h2><%= pluralize(@leave.errors.count, "error") %> prohibited this photo from being saved:</h2>
+              <ul>
+                <% @leave.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+              <% end %>
+               </ul>
+          </div>
+      <% end %>
+          <p>
+            <%= f.label :Section %><br>
+            <%= f.text_field :status,:value => params[:status],:readonly => true  %>
+          </p>
+   
+           <p>
+            <%= f.label :Comment %><br>
+            <%= f.text_area :leave_comment %>
+           </p>
+           <%= f.hidden_field :leave_id,:id =>"leaveid" ,:value => @leave.id %>
+           <p>
+              <%= f.submit value ="Update" ,:id =>"update" %>
+           </p>
+	 
+  <% end %>

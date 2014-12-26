@@ -1,0 +1,21 @@
+
+  <div id="calendar">  
+  <h2 id="month">  
+    <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m-01"),:remote => true %>  
+    <%= h @date.strftime("%B %Y") %>  
+    <%= link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m-01"),:remote => true %>  
+  </h2>   
+        <%= calendar_for(@leaves, :year => @date.year, :month => @date.month) do |calendar| %>
+            <%= calendar.head('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday') %>
+            <% calendar.day(:day_method => :start_date) do |day, leaves| %>
+                <%= day.day %>
+                <ul>
+                    <% for leave in leaves %>
+                        <li>
+                            <%= leave.user.first_name %>
+                        </li>
+                    <% end %>
+                </ul>
+            <% end %>
+        <% end %>
+</div>
