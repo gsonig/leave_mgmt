@@ -68,5 +68,5 @@ gem 'bootstrap3-datetimepicker-rails', '~> 3.1.3'
 gem 'kaminari'
 gem 'rolify'
 gem 'cancan'
-gem 'fullcalendar-rails'
+# gem 'fullcalendar-rails'
 
