@@ -1,24 +1,25 @@
-
 <div id="myModal" class="modal fade">
-      <div class="modal-dialog">
-            <div class="modal-content">
-                    <div class="modal-header" style="background: gray;">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                          <h4 class="modal-title" id="myModalLabel ">Leaves Update </h4>
-                     </div>
-                        <div class="modal-body" style="background: pink; padding-left: 70px; font-size: 20px;">
-                        </div>
-                        <div class='modal-footer'>
-                            <button type="button" data-dismiss="modal" class="btn">Close</button>
-                        </div>
-            </div>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="background: gray;">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel ">Leaves Update </h4>
       </div>
+        <div class="modal-body" style="background: pink; padding-left: 70px; font-size: 20px;">
+        </div>
+        <div class='modal-footer'>
+          <button type="button" data-dismiss="modal" class="btn">Close</button>
+        </div>
+    </div>
+  </div>
 </div> 
 
 <script type="text/javascript">
-          $(document).ready(function() {
-                      $('.modal-body').html("<%=  j (render 'form') %>");
-                      $('#myModal').modal('show');
-                      $('#update').modal('hide');
-           });
-        </script
+  $(document).ready(function() {
+    $('.modal-body').html("<%=  j (render 'form') %>");
+    $('#myModal').modal('show');
+    $('#update').click(function(){
+      $('#myModal').modal('hide');
+    });
+   });
+</script>

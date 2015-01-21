@@ -1,0 +1,47 @@
+<div class="container">
+  <div id="leafe">    
+    <% if @leaves.present? %>
+      <h1 class="title">Approval leaves </h1>
+      <%= paginate @leaves %>
+      <table class="leave_table">
+        <tr>
+            <th >User</th>
+            <th >Subjects</th>
+            <th>Comment    </th>
+            <th>Start_Date </th>
+            <th>End_Date    </th>
+            <th>Day</th>
+            <th>Action</th>         
+        </tr>
+        <% @leaves.each do |leave| %>
+            <% unless current_user.id == leave.user_id %>
+                <% if current_user.has_role? :hr %>    
+                    <tr>
+                        <td><%= leave.user.first_name %></td>
+                        <td><%= leave.subject %></td>   
+                        <td><%= leave.comment %></td>
+                        <td><%= leave.start_date.strftime("%d-%m-%Y %H:%M %p") %></td>
+                        <td><%= leave.end_date.strftime("%d-%m-%Y %H:%M %p") %></td>
+                        <td><%= leave.no_of_day %></td>
+                        <td><%= link_to 'Accept',leafe_leave_comment_path(leave, :status =>'Approved' ), :remote => true %> |<%= link_to 'Decline',leafe_leave_comment_path(leave, :status =>'Decline' ), :remote => true %></td>
+                    </tr>
+                <% else %>
+                    <td><%= leave.user.first_name %></td>
+                    <td><%= leave.subject %></td>   
+                    <td><%= leave.comment %></td>
+                    <td><%= leave.start_date %></td>
+                    <td><%= leave.end_date %></td>
+                    <td><%= leave.no_of_day %></td>
+                    <td><%= link_to 'Accept',leafe_leave_comment_path(leave, :status =>'Approved' ), :remote => true %> |<%= link_to 'Decline',leafe_leave_comment_path(leave, :status =>'Decline' ), :remote => true %></td>          
+                    </tr>
+                <% end %>    
+            <% end %>    
+          <% end %>    
+        </table>
+    <% else %>
+      <h1 class="alert alert-danger">No Leave for Approval</h  
+    <% end %>
+  </div>    
+  <div id="pop"></div>
+  <div id="all_leave"></div>
+</div>

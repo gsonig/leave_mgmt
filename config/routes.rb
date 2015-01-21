@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     get 'accept'
     get 'decline'
     get 'leave_comment'
+		get 'leave', :on => :collection		
   end
 
   #resources :users do
@@ -14,7 +15,9 @@ Rails.application.routes.draw do
   #resources :users, :except => :new
   
   get "/welcome_notify",  to: "welcomes#notify"
-
+	get "/show_responsible", to: "welcomes#responsible"
+	get "/approval_leave", to: "welcomes#approval_leave"
+	get "/employer_leaves", to: "welcomes#employer_leave"
   devise_for :users, :controllers => {
       :invitations => 'users/invitations' # user_invitations_controller.rb
       }, :skip => [:registrations]

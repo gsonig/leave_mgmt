@@ -1,0 +1,17 @@
+<div class="container">
+	<h2 >Responsible list</h2>
+	<table class="leave_table">
+		<th>users</th>
+		<th>responsibles</th>
+		<% @users.each do |user| %>
+			<tr>
+				<td><%= user.first_name %></td>	
+				<td>
+					<% user.responsibles.each do |responsible| %>
+					    <%= responsible.return_responsible_user.first_name %>
+					<% end %>
+				</td>
+			</tr>	
+		<% end %>
+	</table>
+</div>	

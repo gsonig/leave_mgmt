@@ -14,12 +14,15 @@
 //= require jquery
 //= require jquery.ui.all
 //= require jquery_ujs
+//= require cal
+//= require moment
+//= require bootstrap-datetimepicker
 //= require bootstrap.min
-
-//=  require_tree .
-//= require bootstrap-datepicker
+//= require bootstrap
+//= require bootstrap-datepicker1
 //= require fullcalendar
 //= require gcal
+
 
 
 

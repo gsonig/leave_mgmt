@@ -1,13 +1,79 @@
-<%= form_for [@leave] do |f| %>
- 
-  <%= f.hidden_field :user_id, :value => current_user.id %>
+<div class = margin-left>
+<h3>Apply for leave</h3>
+<%= form_for [@leave]  do |f| %>
 
+    <% if @leave.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@leave.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+            <ul>
+            <% @leave.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+    <%end%>
+
+  <p >
+    <%= f.label :Subject %><br>
+    <%= f.text_area :subject ,:id => "message_area" ,:required => true %>
+  </p>
+  
+  <p > 
+    <%= f.radio_button :day, 'fullday',:id=>"fullday"%> 
+    <%= label :day, 'Full_Day'  %>
+    <%= f.radio_button :day, 'halfday',:id=>"halfday"  %>
+    <%= label :day, 'Half_day' %>      
+  </p> 
+  <p id="p1">
+    <%= f.label :Date %><br>
+    <%= f.text_field :start_date, :id => "dpd1", :class=>"span2" ,:required => true %>
+    <%= f.text_field :end_date, :id => "dpd2", :class=>"span2",:required => true %>
+  </p>
   <p>
-    <%= f.label :comment %><br>
-    <%= f.text_area :comment, :id => "message_area" %>
+    <%= f.label :Reason %><br>
+    <%= f.text_area :comment, :id => "message_area",:required => true %>
   </p>
   <br>
-  <p>
-     <%= f.submit value ="Update leaves"  %>
-  </p>
+    <%= f.hidden_field :status, :value => "pending" %>
+  <div>
+    <%= f.submit value ="Apply", :class=>"btn btn-primary" %>
+  </div>
 <% end %>
+</div>
+
+<script type="text/javascript">
+
+    var nowTemp = new Date();
+    var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+    var checkin = $('#dpd1').datepicker({
+     format: 'yyyy/mm/dd',  
+    onRender: function(date) {
+    return date.valueOf() < now.valueOf() ? 'disabled' : '';
+    }
+    }).on('changeDate', function(ev) {
+    if (ev.date.valueOf() > checkout.date.valueOf()) {
+    var newDate = new Date(ev.date)
+    newDate.setDate(newDate.getDate() + 1);
+    checkout.setValue(newDate);
+    }
+    checkin.hide();
+    $('#dpd2').focus();
+    }).data('datepicker');
+    var checkout = $('#dpd2').datepicker({
+    format: 'yyyy/mm/dd',  
+    onRender: function(date) {
+    return date.valueOf() < checkin.date.valueOf() ? 'disabled' : '';
+    }
+    }).on('changeDate', function(ev) {
+      console.log(checkout.date.valueOf())
+    checkout.hide();
+    }).data('datepicker');
+    
+    $("#halfday").click(function(){     
+      $("#dpd2").hide();
+    });
+    $("#fullday").click(function(){
+       $("#dpd2").show(); 
+    });
+</script>

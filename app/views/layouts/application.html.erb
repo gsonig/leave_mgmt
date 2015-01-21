@@ -1,16 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>GrepRubyAdminstration</title>
+  <title>GrepRuby Leave Management System</title>
   <%= stylesheet_link_tag    'application', media: 'all'%>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
   <%= render 'layouts/header' %>
-        <% flash.each do |key, value| %>
-        <%= content_tag(:div, value, :class => "flash #{key}") %>
-        <% end %>
+	<h4 class="title">	
+		<% flash.each do |key, value| %>
+			<%= content_tag(:div, value, :class => "flash #{key}") %>
+		<% end %>
+	</h4>
+  <% if user_signed_in? %>    
+    <ul class="nav nav-tabs">
+      <li><%= link_to "Plan Leave", new_leafe_path %></li>
+      <li><%= link_to "Your Leave",leave_leaves_path %></li>
+      <% if can? :index,@leaves %>
+        <li><%= link_to "All Leaves",leaves_path %></li>
+        <li><%= link_to "Responsibles", show_responsible_path %></li> <li><%= link_to "Approval Leaves",approval_leave_path  %></li>  
+      <% end %>   
+      <% unless @responsible_for.blank? %>
+        <li><%= link_to "Approval Leaves",approval_leave_path  %></li>
+        <li><%= link_to "Employer Leaves",employer_leaves_path  %></li>
+      <% end %>   
+  </ul>
+  <% end %><br><br>
   <%= yield %>
   <%= render 'layouts/footer' %>
 </body>

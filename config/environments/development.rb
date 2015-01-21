@@ -27,8 +27,10 @@ Rails.application.configure do
   # number of complex assets.
   config.assets.debug = true
 
+
+
   # Adds additional error checking when serving assets at runtime.
-  # Checks for improperly declared sprockets dependencies.
+  # Checks for improperly declared sprockets dependencies.example
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
 
@@ -37,16 +39,18 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost:3000'}
   config.action_mailer.perform_deliveries = true
 
-  config.action_mailer.delivery_method = :letter_opener
-  #config.action_mailer.delivery_method = :smtp
+  #config.action_mailer.delivery_method = :letter_opener
+	config.action_mailer.delivery_method = :smtp
   
-  #config.action_mailer.smtp_settings = {
-  #  address: "smtp.gmail.com",
-  #  port: 587,
-  #  domain: "localhost",
-  #  authentication: "plain",
-  #  enable_starttls_auto: true,
-  #  user_name: "gnema@grepruby.com", # you can use ordinary gmail username here
-  #  password: "89hanuman16"   # you can use your gmail password here, but don't push the changes
-  #}
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: "gmail.com",
+    authentication: "login",
+    enable_starttls_auto: true,
+    user_name: "sourabhtest.ukkalgaonkar@gmail.com", # you can use ordinary gmail username here
+    password: "enternumber@129"   # you can use your gmail password here, but don't push the changes
+  }
+	config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+	config.action_mailer.raise_delivery_errors = true
 end

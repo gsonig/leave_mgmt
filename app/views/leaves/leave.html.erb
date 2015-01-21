@@ -1,0 +1,68 @@
+<div class="container">
+    <%= form_tag("/leaves/leave", method: "get") do %>
+        <%= label_tag(:q, "Search for:", :class=> "label label-danger") %>
+        <%= label_tag(:q, "From", :class=>"label label-primary") %>
+        <%= text_field_tag :q1, params[:q1], :id => 'dpd1', :class=>"datepicker" %>
+        <%= label_tag(:q, "To", :class=>"label label-primary") %>
+        <%= text_field_tag :q2, params[:q2], :id => 'dpd2', :class=>"datepicker" %>
+        <%= submit_tag("Go", :class => "btn btn-primary btn-lg1") %>
+    <% end %>
+</div>    
+<div class="container">
+    <% if @leaves.present? %>
+        <%= paginate @leaves %>
+        <h1 class="title">All Leaves</h1>
+        <table class="leave_table">
+            <tr >
+            	<th>User</th>
+                <th >Subjects</th>
+                <th>Comment </th>
+                <th>Start_Date </th>
+                <th>End_Date </th>
+                <th>No of day </th>
+                <th>Status</th>
+                <th>Leave Comment</th>
+                <th>Action</th>
+            </tr>
+            <% @leaves.each do |leave| %>
+            	<tr>
+            		<td><%= leave.user.first_name %></td>
+            		<td><%= leave.subject %></td>	
+                    <td><%= leave.comment %></td>
+                    <td><%= leave.start_date.strftime("%d-%m-%Y %H:%M %p") %></td>
+                    <td><%= leave.end_date.strftime("%d-%m-%Y %H:%M %p")%></td>
+                    <td><%= leave.no_of_day %></td>
+                    <td><%= leave.status %></td>
+                    <td><%= leave.leave_comment %></td>
+                    <% unless leave.start_date < Time.now %>
+                        <td><%= link_to image_tag("cancel.png",:size=>"20x20"),leafe_path(leave.id), method: :delete %></td>
+                    <% else %>
+                        <td>Cancel</td>
+                    <% end %>    
+                </tr>    
+            <% end %>
+        </table>
+    <% else %>
+    <h1 class="alert alert-danger">No Leaves Are Available</h1>    
+    <% end %>
+</div>
+<script type="text/javascript">
+    var nowTemp = new Date();
+    var now = new Date(0, 0, 0, 0);
+     
+    var checkin = $('#dpd1').datepicker({
+    }).on('changeDate', function(ev) {       
+    var newDate = new Date(ev.date)
+    newDate.setDate(newDate.getDate());
+    checkout.setValue(newDate);
+    checkin.hide(newDate);
+    $('#dpd2')[0].focus();
+    }).data('datepicker');
+    var checkout = $('#dpd2').datepicker({
+    onRender: function(date) {
+    return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
+    }
+    }).on('changeDate', function(ev) {
+    checkout.hide();
+    }).data('datepicker');
+</script>

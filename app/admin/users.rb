@@ -1,6 +1,5 @@
 ActiveAdmin.register User do
-
-     actions :all, :except => [:edit]
+  actions :all, :except => [:edit,:new]
   # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -12,8 +11,7 @@ ActiveAdmin.register User do
   #  permitted = [:permitted, :attributes]
   #  permitted << :other if resource.something?
   #  permitted
-  # end
-  
+  # end  
   index do  
     column :id
     column :first_name
@@ -50,27 +48,35 @@ ActiveAdmin.register User do
     @user = User.new
   end
   
-  def show
-    @user = User.find(params[:id])
-  end
-  
-  def create                        #perform task
-    @user=User.new(user_params)
-
-    if @user.save
-      redirect_to @user
-    else
-      render 'new'
+  show  do
+    attributes_table do
+      row :id
+      row :email
+      row :first_name
+      row :last_name
+      row :gender
+      row :dob
+      row :mobile
+      row :family_member_mobile
+      row :address
+      row :iamge
     end
-  end  
-  
-  def index
-    @user = User.all
   end
  
+  # def create                        #perform task
+  #   @user=User.new(user_params)
+  #   if @user.save
+  #     redirect_to @user
+  #   else
+  #     render 'new'
+  #   end
+  # end  
+
+ 
   collection_action :send_invitation, :method => :post do
-   
     @user = User.invite!(params.require(:user).permit(:first_name, :last_name, :email , :invitation_token))
+ 
+    @user.add_role params[:user][:role][:name]
     if @user.errors.empty?
       flash[:success] = "User has been successfully invited."
       redirect_to admin_root_path
@@ -89,6 +95,4 @@ ActiveAdmin.register User do
   filter :family_member_mobile
   filter :email
   filter :address
-  
-  
 end

@@ -9,15 +9,16 @@
  * compiled file so the styles you add here take precedence over styles defined in any styles
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
-
- *= require bootstrap.min
- *= require_tree .
  *= require_self
+ *= require datepicker1
  *= require bootstrap-datepicker
-*= require jquery.ui.all
-*= require fullcalendar
+ *= require bootstrap.min
+ *= require jquery.ui.all
+ *= require font-awesome  
+ *= require bootstrap
+ *= require bootstrap-datetimepicker	
+ *= require fullcalendar
+ *= require style
+ *= require leaves 
+ *= require custom 
  */
- #calendar table {
-  border-collapse: collapse;
-  width: 100%;
-}

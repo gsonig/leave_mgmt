@@ -1,1 +1,34 @@
-<%= render 'index' %>
+<div class="container">
+  <% if @leaves.blank?  %>
+      <h1 class="alert alert-danger">No leves</h1>
+  <% else %>
+    <% if can? :index, @leaves %>
+      <%= paginate @leaves %>
+      <h1 class="title">All Leaves</h1>
+      <table class="leave_table">
+          <tr>
+              <th >User</th>
+              <th >Subjects</th>
+              <th>Comment    </th>
+              <th>From </th>
+              <th>To    </th>
+              <th>Status</th>
+              <th>Day</th>
+              <th>Leave Comment</th>
+          </tr>
+          <% @leaves.each do |leave| %>
+              <tr>
+                  <td><%= leave.user.first_name %></td>
+                  <td><%= leave.subject %></td>   
+                  <td><%= leave.comment %></td>
+                  <td><%= leave.start_date.strftime("%d-%m-%Y %H:%M %p") %></td>
+                  <td><%= leave.end_date.strftime("%d-%m-%Y %H:%M %p") %></td>
+                  <td><%= leave.status%></td>
+                  <td><%= leave.no_of_day %></td>
+                  <td><%= leave.leave_comment%></td>
+              </tr>    
+          <% end %>
+      </table>
+    <% end %>
+  <% end %>    
+</div>    

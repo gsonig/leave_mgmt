@@ -1,0 +1,24 @@
+<table class="leave_table">
+	<tr>
+	  <th >User</th>
+	  <th >Subjects</th>
+	  <th>Comment    </th>
+	  <th>Start_Date </th>
+	  <th>End_Date    </th>
+	  <th>Day</th>
+	  <th>Action</th>         
+	</tr>
+	<% @all.each do |leave| %>
+		<tr>		
+			<td><%= leave.user.first_name %></td>
+      <td><%= leave.subject %></td>   
+      <td><%= leave.comment %></td>
+      <td><%= leave.start_date %></td>
+      <td><%= leave.end_date %></td>
+      <td><%= leave.no_of_day %></td>
+      <td><%= link_to 'Accept',leafe_leave_comment_path(leave, :status =>'Approved' ), :remote => true %> |<%= link_to 'Decline',leafe_leave_comment_path(leave, :status =>'Decline' ), :remote => true %></td>          
+    </tr>		
+	<% end %>
+
+</table>            
+

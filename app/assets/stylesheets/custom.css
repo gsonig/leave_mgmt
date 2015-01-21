@@ -1,0 +1,69 @@
+#calendar table {
+	border-collapse: collapse;
+    width: 100%;
+}
+
+.leave_table th {
+    background-color: #6d4a70;
+    width: 150px;
+    height: 50px;
+    text-align: center;
+    color: white;
+}
+
+.leave_table td{
+    background-color: pink;	
+    text-align: center;
+    height: 50px;
+}
+
+.title {
+	text-align: center;
+}
+
+.day disabled {
+    color: black;	
+}
+
+#sign_in{
+	background: none repeat scroll 0 0 #6d4a70;
+    border: 0 none;
+    color: #fff;
+    cursor: pointer;
+    font-family: "Open Sans",sans-serif;
+    font-size: 100%;
+    padding: 4%;
+    transition: background 0.3s ease 0s;
+    width: 100%;
+}
+
+.login  h2{
+    background: none repeat scroll 0 0 #6d4a70;
+    color: #fff;
+    font-size: 140%;
+    font-weight: 300;
+    padding: 20px 0;
+    text-align: center;
+}
+
+#email, #password{
+	position: relative;
+	left: 10px;
+	background: none repeat scroll 0 0 #fff;
+    border: 1px solid #ccc;
+    color: #555;
+    font-family: "Open Sans",sans-serif;
+    font-size: 95%;
+    margin-bottom: 4%;
+    padding: 4%;
+    width: 92%;
+}
+
+.edit_page{
+    background: none repeat scroll 0 0 #6d4a70;
+    color: #fff;
+    font-size: 140%;
+    font-weight: 300;
+    padding: 20px 0;
+    text-align: center;
+}
